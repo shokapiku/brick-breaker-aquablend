@@ -1,6 +1,6 @@
 #include <iostream>
 #include "raylib.h"
-#include "Level.h"
+#include "StateManager.h"
 
 int main()
 {
@@ -10,22 +10,24 @@ int main()
     InitWindow(screenWidth, screenHeight, "Brick Breaker!");
     SetTargetFPS(60);
 
-    Level level(screenWidth, screenHeight);
+    StateManager game;
 
     while (WindowShouldClose() == false)
     {
         const float deltaTime{ GetFrameTime() };
 
+        game.update(deltaTime);
+
         BeginDrawing();
         ClearBackground(WHITE);
 
-        level.draw();
+        game.draw();
 
         DrawFPS(10, 10);
         EndDrawing();
     }
 
-    level.unload();
+    game.unload();
 
     CloseWindow();
     return 0;
