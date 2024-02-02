@@ -1,6 +1,10 @@
 #include <iostream>
 #include "raylib.h"
 #include "StateManager.h"
+#include "MenuState.h"
+
+//using directive
+using namespace std;
 
 int main()
 {
@@ -11,6 +15,7 @@ int main()
     SetTargetFPS(60);
 
     StateManager game;
+    game.setState(make_unique<MenuState>(screenWidth, screenHeight, game));
 
     while (WindowShouldClose() == false)
     {
