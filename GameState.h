@@ -2,6 +2,10 @@
 #include "State.h"
 #include "StateManager.h"
 #include "Level.h"
+#include "Paddle.h"
+#include "Ball.h"
+#include <map>
+#include <string>
 
 class GameState : public State
 {
@@ -16,4 +20,7 @@ class GameState : public State
 		int m_screenHeight;
 		StateManager& m_stateManager;
 		Level m_level;
+		Paddle m_paddle;
+		Ball m_ball;
+		std::map<std::string, float> m_levelLimits{};
 };
