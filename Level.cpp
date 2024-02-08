@@ -15,6 +15,9 @@ Level::Level(int screenWidth, int screenHeight)
 	m_tileHeight = 30;
 
 	setLevel(screenWidth, screenHeight);
+
+	m_levelBackground = LoadTexture("assets/images/level-background.png");
+	
 }
 
 void Level::draw()
@@ -25,6 +28,8 @@ void Level::draw()
 	{
 		m_levelMap[i].draw();
 	}
+
+	DrawRectangleLinesEx({1240/2 - 512/2, 800/2 - 360, 512, 660}, 5, RED);
 }
 
 void Level::unload()
