@@ -34,3 +34,44 @@ void HandleCollisions::checkBoundaryCollision(Ball& ball)
 		ball.setSpeed(ballSpeed);
 	}
 }
+
+Vector2 HandleCollisions::calculateCollision(Rectangle& ballCollider, Rectangle& targetCollider, Vector2 ballSpeed)
+{
+	Vector2 ballCenter = { ballCollider.x + ballCollider.width / 2, ballCollider.y + ballCollider.height / 2 };
+	Vector2 targetCenter = { targetCollider.x + targetCollider.width / 2, targetCollider.y + targetCollider.height / 2 };
+	Vector2 resultSpeed = ballSpeed;
+
+	float xDistance = ballCenter.x - targetCenter.x;
+	float yDistance = ballCenter.y - targetCenter.y;
+
+	bool isCollidingVertically = xDistance < ballCenter.x + targetCenter.x;
+	bool isCollidingHorizontally = yDistance < ballCenter.y + targetCenter.y;
+
+	if (isCollidingVertically)
+	{
+		if (ballCollider.x + ballCollider.width > targetCollider.x && ballCollider.x < targetCenter.x)
+		{
+			resultSpeed.x *= -1;
+		}
+		else if (ballCollider.x < targetCollider.x + targetCollider.width && ballCollider.x > targetCenter.x)
+		{
+			resultSpeed.x *= -1;
+		}
+	}
+
+	if (isCollidingHorizontally)
+	{
+		if (ballCollider.y + ballCollider.height > targetCollider.y && ballCollider.y < targetCenter.y)
+		{
+			resultSpeed.y *= -1;
+		}
+		else if (ballCollider.y < targetCollider.y + targetCollider.height && ballCollider.y > targetCenter.y)
+		{
+			resultSpeed.y *= -1;
+		}
+	}
+
+	return resultSpeed;
+}
+
+

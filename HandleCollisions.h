@@ -13,4 +13,5 @@ private:
 	int m_screenWidth{};
 	int m_screenHeight{};
 	std::map<std::string, int> m_levelBoundaries;
+	Vector2 calculateCollision(Rectangle& ballCollider, Rectangle& targetCollider, Vector2 ballSpeed);
 };
