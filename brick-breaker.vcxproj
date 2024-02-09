@@ -131,6 +131,7 @@
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="brick-breaker.cpp" />
     <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="HandleCollisions.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="MenuState.cpp" />
     <ClCompile Include="Paddle.cpp" />
@@ -141,6 +142,7 @@
     <ClInclude Include="Ball.h" />
     <ClInclude Include="Block.h" />
     <ClInclude Include="GameState.h" />
+    <ClInclude Include="HandleCollisions.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="MenuState.h" />
     <ClInclude Include="Paddle.h" />

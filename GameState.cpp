@@ -7,7 +7,8 @@ using namespace std;
 
 GameState::GameState(int screenWidth, int screenHeight, StateManager& stateManager)
 	: m_screenWidth(screenWidth), m_screenHeight(screenHeight), m_stateManager(stateManager), 
-	  m_level(screenWidth, screenHeight), m_paddle(screenWidth, screenHeight), m_ball(screenWidth, screenHeight)
+	  m_level(screenWidth, screenHeight), m_paddle(screenWidth, screenHeight), m_ball(screenWidth, screenHeight),
+	  m_collisions(m_screenWidth, screenHeight)
 {
 
 }
@@ -28,6 +29,7 @@ void GameState::update(float deltaTime)
 	m_paddle.update(deltaTime);
 	m_ball.update(deltaTime);
 	m_ball.followPaddle(m_paddle);
+	m_collisions.checkBoundaryCollision(m_ball);
 }
 
 void GameState::draw()

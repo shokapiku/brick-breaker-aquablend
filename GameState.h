@@ -4,6 +4,7 @@
 #include "Level.h"
 #include "Paddle.h"
 #include "Ball.h"
+#include "HandleCollisions.h"
 #include <map>
 #include <string>
 
@@ -22,5 +23,5 @@ class GameState : public State
 		Level m_level;
 		Paddle m_paddle;
 		Ball m_ball;
-		std::map<std::string, float> m_levelLimits{};
+		HandleCollisions m_collisions;
 };
