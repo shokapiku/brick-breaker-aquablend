@@ -29,18 +29,6 @@ void Ball::update(float deltaTime)
 	m_position.x += m_speed.x * deltaTime;
 	m_position.y += m_speed.y * deltaTime;
 
-	if (m_position.x + m_ballSize.x > m_levelLimits["xMax"] || m_position.x < m_levelLimits["xMin"])
-	{
-		m_speed.x *= -1;
-		m_speed.y *= 1;
-	}
-
-	if (m_position.y < m_levelLimits["yMin"] || m_position.y + m_ballSize.y > m_levelLimits["yMax"])
-	{
-		m_speed.x *= 1;
-		m_speed.y *= -1;
-	}
-
 }
 
 void Ball::draw()
