@@ -12,6 +12,7 @@ class Paddle
 		void unload();
 		Vector2 getPosition();
 		int getPaddleSize();
+		Rectangle getCollider();
 	private:
 		int m_screenWidth{};
 		int m_screenHeight{};
@@ -25,7 +26,4 @@ class Paddle
 		Vector2 m_brushPosition{};
 		Texture m_brushTextureIdle{};
 		Texture m_brushTexturePressed{};
-
-
-
 };

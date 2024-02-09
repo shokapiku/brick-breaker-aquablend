@@ -49,6 +49,11 @@ int Paddle::getPaddleSize()
 	return m_paddleTexture.width;
 }
 
+Rectangle Paddle::getCollider()
+{
+	return m_paddleCollider;
+}
+
 void Paddle::paddleMovement(float deltaTime)
 {
 	if (IsKeyDown(KEY_A))
