@@ -71,3 +71,28 @@ void Ball::followPaddle(Paddle paddle)
 
 	m_position.x = paddle.getPosition().x + paddle.getPaddleSize() / 2 - m_ballSize.x / 2;
 }
+
+Vector2 Ball::getPosition()
+{
+	return m_position;
+}
+
+void Ball::setPosition(Vector2 position)
+{
+	m_position = position;
+}
+
+Vector2 Ball::getSpeed()
+{
+	return m_speed;
+}
+
+void Ball::setSpeed(Vector2 speed)
+{
+	m_speed = speed;
+}
+
+Rectangle Ball::getCollider()
+{
+	return m_ballCollider;
+}

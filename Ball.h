@@ -13,6 +13,11 @@ public:
 	void unload();
 	void setLimits(float minX, float maxX, float minY, float maxY);
 	void followPaddle(Paddle paddle);
+	Vector2 getPosition();
+	void setPosition(Vector2 position);
+	Vector2 getSpeed();
+	void setSpeed(Vector2 speed);
+	Rectangle getCollider();
 
 private:
 	int m_screenWidth{};
