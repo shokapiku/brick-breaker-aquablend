@@ -45,14 +45,6 @@ void Ball::unload()
 	UnloadTexture(m_ballTexture);
 }
 
-void Ball::setLimits(float minX, float maxX, float minY, float maxY)
-{
-	m_levelLimits.insert(std::make_pair( "xMin", minX ));
-	m_levelLimits.insert(std::make_pair( "xMax", maxX));
-	m_levelLimits.insert(std::make_pair( "yMin", minY));
-	m_levelLimits.insert(std::make_pair( "yMax", maxY));
-}
-
 void Ball::followPaddle(Paddle paddle)
 {
 	if (m_canMove) return;
