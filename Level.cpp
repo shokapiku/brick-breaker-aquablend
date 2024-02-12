@@ -5,9 +5,9 @@
 using namespace std;
 
 //Forward declaration
-array<int, 225> createType1();
-array<int, 225> createType2();
-array<int, 225> createType3();
+array<int, Level::LEVEL_SIZE> mapType1();
+array<int, Level::LEVEL_SIZE> mapType2();
+array<int, Level::LEVEL_SIZE> mapType3();
 
 Level::Level(int screenWidth, int screenHeight)
 {
@@ -42,6 +42,16 @@ void Level::unload()
 	}
 }
 
+std::array<Block, Level::LEVEL_SIZE>& Level::getLevelMap()
+{
+	return m_levelMap;
+}
+
+Block& Level::getBlock(int index)
+{
+	return m_levelMap[index];
+}
+
 void Level::setLevel(int screenWidth, int screenHeight)
 {
 	random_device random;
@@ -54,16 +64,16 @@ void Level::setLevel(int screenWidth, int screenHeight)
 	switch (type)
 	{
 		case 0:
-			example = createType1();
+			example = mapType1();
 			break;
 		case 1:
-			example = createType2();
+			example = mapType2();
 			break;
 		case 2:
-			example = createType3();
+			example = mapType3();
 			break;
 		default:
-			example = createType1();
+			example = mapType1();
 			break;
 	}
 
@@ -97,7 +107,7 @@ void Level::setLevel(int screenWidth, int screenHeight)
 //1-white, 2-black, 3-red, 4-green, 5-blue
 //6-pink, 7-orange, 8-brown
 
-array<int, 225> createType1()
+array<int, Level::LEVEL_SIZE> mapType1()
 {
 	return { 
 		{
@@ -120,7 +130,7 @@ array<int, 225> createType1()
 	};
 }
 
-array<int, 225> createType2()
+array<int, Level::LEVEL_SIZE> mapType2()
 {
 	return {
 		{
@@ -143,7 +153,7 @@ array<int, 225> createType2()
 	};
 }
 
-array<int, 225> createType3()
+array<int, Level::LEVEL_SIZE> mapType3()
 {
 	return {
 		{

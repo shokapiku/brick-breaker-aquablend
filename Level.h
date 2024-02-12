@@ -11,6 +11,8 @@ public:
 	static const int LEVEL_SIZE = 225;
 	void draw();
 	void unload();
+	std::array<Block, LEVEL_SIZE>& getLevelMap();
+	Block& getBlock(int index);
 private:
 	std::array<Block, LEVEL_SIZE> m_levelMap{};
 	std::array<Texture, 8> m_blockTexture 
