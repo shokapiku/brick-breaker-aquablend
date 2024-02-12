@@ -31,6 +31,7 @@ void GameState::update(float deltaTime)
 	m_ball.followPaddle(m_paddle);
 	m_collisions.checkBoundaryCollision(m_ball);
 	m_collisions.checkPaddleCollision(m_ball, m_paddle);
+	m_collisions.checkBlocksCollision(m_ball, m_level);
 }
 
 void GameState::draw()

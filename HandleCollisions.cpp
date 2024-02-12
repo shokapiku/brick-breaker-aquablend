@@ -50,6 +50,37 @@ void HandleCollisions::checkPaddleCollision(Ball& ball, Paddle& paddle)
 	}
 }
 
+void HandleCollisions::checkBlocksCollision(Ball& ball, Level& level)
+{
+	std::array<Block, level.LEVEL_SIZE> blockGroup = level.getLevelMap();
+
+	Rectangle ballCol = ball.getCollider();
+	Vector2 ballSpeed = ball.getSpeed();
+	int indexBlock{};
+	bool collision = false;
+
+	for (int i = 0; i < level.LEVEL_SIZE; i++)
+	{
+		if (blockGroup[i].getEndurance() == 0) continue;
+
+		collision = CheckCollisionRecs(ballCol, blockGroup[i].getCollider());
+
+		if (collision)
+		{
+			indexBlock = i;
+			break;
+		}
+	}
+
+	if (collision)
+	{
+		Rectangle blockCol = level.getBlock(indexBlock).getCollider();
+		Vector2 resultSpeed = calculateCollision(ballCol, blockCol, ballSpeed);
+		ball.setSpeed(resultSpeed);
+		level.getBlock(indexBlock).damage();
+	}
+}
+
 Vector2 HandleCollisions::calculateCollision(Rectangle& ballCollider, Rectangle& targetCollider, Vector2 ballSpeed)
 {
 	Vector2 ballCenter = { ballCollider.x + ballCollider.width / 2, ballCollider.y + ballCollider.height / 2 };
