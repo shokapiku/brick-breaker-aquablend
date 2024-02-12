@@ -35,6 +35,21 @@ void HandleCollisions::checkBoundaryCollision(Ball& ball)
 	}
 }
 
+void HandleCollisions::checkPaddleCollision(Ball& ball, Paddle& paddle)
+{
+	Rectangle ballCol = ball.getCollider();
+	Rectangle paddleCol = paddle.getCollider();
+	Vector2 ballSpeed = ball.getSpeed();
+
+	bool collision = CheckCollisionRecs(paddleCol, ballCol);
+
+	if (collision)
+	{
+		Vector2 resultSpeed = calculateCollision(ballCol, paddleCol, ballSpeed);
+		ball.setSpeed(resultSpeed);
+	}
+}
+
 Vector2 HandleCollisions::calculateCollision(Rectangle& ballCollider, Rectangle& targetCollider, Vector2 ballSpeed)
 {
 	Vector2 ballCenter = { ballCollider.x + ballCollider.width / 2, ballCollider.y + ballCollider.height / 2 };

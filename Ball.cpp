@@ -29,6 +29,7 @@ void Ball::update(float deltaTime)
 	m_position.x += m_speed.x * deltaTime;
 	m_position.y += m_speed.y * deltaTime;
 
+	m_ballCollider = { m_position.x, m_position.y, m_ballSize.x, m_ballSize.y };
 }
 
 void Ball::draw()
