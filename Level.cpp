@@ -24,7 +24,7 @@ void Level::draw()
 {
 	DrawTexture(m_levelBackground, 0, 0, WHITE);
 	
-	for (int i = 0; i < m_levelSize; i++)
+	for (int i = 0; i < LEVEL_SIZE; i++)
 	{
 		m_levelMap[i].draw();
 	}
@@ -36,7 +36,7 @@ void Level::unload()
 {
 	UnloadTexture(m_levelBackground);
 
-	for (int i = 0; i < m_levelSize; i++)
+	for (int i = 0; i < LEVEL_SIZE; i++)
 	{
 		m_levelMap[i].unload();
 	}
@@ -49,7 +49,7 @@ void Level::setLevel(int screenWidth, int screenHeight)
 
 	int type = dist(random);
 
-	array<int, m_levelSize> example;
+	array<int, LEVEL_SIZE> example;
 
 	switch (type)
 	{
@@ -75,7 +75,7 @@ void Level::setLevel(int screenWidth, int screenHeight)
 
 	int width = screenWidth - 15 * m_tileWidth;
 
-	for (int i = 0; i < m_levelSize; i++)
+	for (int i = 0; i < LEVEL_SIZE; i++)
 	{
 		x = width / 2 + count * m_tileWidth;
 		y = 50 + m_tileHeight * countRow;

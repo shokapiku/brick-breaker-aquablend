@@ -8,14 +8,11 @@ class Level
 {
 public:
 	Level(int screenWidth, int screenHeight);
+	static const int LEVEL_SIZE = 225;
 	void draw();
 	void unload();
-	void setLevel(int screenWidth, int screenHeight);
 private:
-	static const int m_levelWidth = 15;
-	static const int m_levelHeight = 15;
-	static const int m_levelSize = m_levelWidth * m_levelHeight;
-	std::array<Block, m_levelSize> m_levelMap{};
+	std::array<Block, LEVEL_SIZE> m_levelMap{};
 	std::array<Texture, 8> m_blockTexture 
 	{  
 		LoadTexture("assets/images/block-test.png"),
@@ -30,4 +27,5 @@ private:
 	float m_tileWidth;
 	float m_tileHeight;
 	Texture m_levelBackground{};
+	void setLevel(int screenWidth, int screenHeight);
 };
