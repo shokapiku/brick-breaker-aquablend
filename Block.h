@@ -10,11 +10,15 @@ public:
 	void damage();
 	void draw();
 	void unload();
+	Vector2 getPosition();
+	Rectangle getCollider();
+	int getEndurance();
 
 private:
 	Texture m_texture{};
 	Vector2 m_position{};
 	int m_endurance{};
+	Rectangle m_collider{};
 	Color m_fontColor;
 	bool m_canDraw{ false };
 };

@@ -12,6 +12,8 @@ Block::Block(float x, float y, Texture texture, int endurance, Color fontColor)
 	m_endurance = endurance;
 	m_fontColor = fontColor;
 
+	m_collider = { m_position.x, m_position.y, static_cast<float>(m_texture.width), static_cast<float>(m_texture.height) };
+
 	m_canDraw = true;
 }
 
@@ -33,10 +35,25 @@ void Block::draw()
 	
 	DrawTexture(m_texture, m_position.x, m_position.y, WHITE);
 	DrawText(TextFormat("%d", m_endurance), m_position.x + m_texture.width / 3, m_position.y + m_texture.height / 4, 20, m_fontColor);
-
+	DrawRectangleLinesEx(m_collider, 2, BLUE);
 }
 
 void Block::unload()
 {
 	UnloadTexture(m_texture);
+}
+
+Vector2 Block::getPosition()
+{
+	return m_position;
+}
+
+Rectangle Block::getCollider()
+{
+	return m_collider;
+}
+
+int Block::getEndurance()
+{
+	return m_endurance;
 }
